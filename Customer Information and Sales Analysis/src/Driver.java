@@ -11,6 +11,11 @@ public class Driver {
 		int option = input.nextInt();
 		if (option == 1){
 			System.out.println("How many customers would you like the enter into the system? Please respond with an integer.");
+			int cnum = input.nextInt();
+			for(int i = 0; i < cnum; i++){
+				System.out.println("Enter the First name of customer number "+ i );
+				
+			}
 		}
 	}
 
