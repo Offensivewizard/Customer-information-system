@@ -1,7 +1,8 @@
-import java.util.Scanner;
+import java.util.*;
 public class Driver {
 
 	public static void main(String[] args) {
+				
 		
 		Scanner input = new Scanner(System.in);
 		System.out.println("Welcome to the customer information and sales analysis system.");
@@ -14,7 +15,8 @@ public class Driver {
 			int cnum = input.nextInt();
 			for(int i = 0; i < cnum; i++){
 				System.out.println("Enter the First name of customer number "+ i );
-				
+				String detail = "" + i;
+				ArrayList<String> d = new ArrayList<String>(); 
 			}
 		}
 	}
