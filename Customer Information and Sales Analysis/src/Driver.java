@@ -13,9 +13,9 @@ public class Driver {
 		if (option == 1){
 			System.out.println("How many customers would you like the enter into the system? Please respond with an integer.");
 			int cnum = input.nextInt();
+			ArrayList<String> details = new ArrayList<String>();
 			for(int i = 0; i < cnum; i++){
-				System.out.println("Enter the First name of customer number "+ i );
-				ArrayList<String> details = new ArrayList<String>(); 
+				System.out.println("Enter the First name of customer number "+ i ); 
 				String fName = input.next();
 				details.add(fName);
 				
@@ -38,4 +38,5 @@ public class Driver {
 		}
 	}
 
+}
 }
