@@ -15,9 +15,26 @@ public class Driver {
 			int cnum = input.nextInt();
 			for(int i = 0; i < cnum; i++){
 				System.out.println("Enter the First name of customer number "+ i );
-				String detail = "" + i;
-				ArrayList<String> d = new ArrayList<String>(); 
-			}
+				ArrayList<String> details = new ArrayList<String>(); 
+				String fName = input.next();
+				details.add(fName);
+				
+				System.out.println("Enter the First name of customer number "+ i );
+				String lName = input.next();
+				details.add(lName);
+				
+				System.out.println("Enter the city name of customer number "+ i);
+				String city = input.next();
+				details.add(city);
+				
+				System.out.println("Enter the postal code of customer number "+ i);
+				String postal = input.next();
+				//Validate with method in seperate class
+				
+				System.out.println("Enter the credit card number of customer number " + i);
+				String credit = input.next();
+				
+				
 		}
 	}
 
