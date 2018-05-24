@@ -13,28 +13,28 @@ public class Driver {
 		if (option == 1){
 			System.out.println("How many customers would you like the enter into the system? Please respond with an integer.");
 			int cnum = input.nextInt();
-			ArrayList<String> details = new ArrayList<String>();
-			for(int i = 0; i < cnum; i++){
+			ArrayList<Customer> details = new ArrayList<Customer>();
+			for(int i = 0; i < cnum; i++){ 
 				System.out.println("Enter the First name of customer number "+ i ); 
 				String fName = input.next();
-				details.add(fName);
 				
 				System.out.println("Enter the First name of customer number "+ i );
 				String lName = input.next();
-				details.add(lName);
 				
 				System.out.println("Enter the city name of customer number "+ i);
 				String city = input.next();
-				details.add(city);
 				
 				System.out.println("Enter the postal code of customer number "+ i);
-				String postal = input.next();
-				//Validate with method in seperate class
+				int postal = input.nextInt();
+				//Validate with method in separate class
 				
 				System.out.println("Enter the credit card number of customer number " + i);
-				String credit = input.next();
+				int credit = input.nextInt();
+				CreditValidation.creditValidate(credit);
 				
 				
+				Customer customer = new Customer (fName, lName, city, postal, credit);
+				details.add(customer);
 		}
 	}
 

@@ -3,8 +3,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PostalValidation {
-		public static boolean postVal(String postal){
-		 int length = postal.length();
+		public static boolean postVal(int postal){
+		String	postalString = Integer.toString(postal);
+		 int length = postalString.length();
 		 ArrayList<String> postalCodes = new ArrayList<String>();
 		 if(length>=3){
 			 
