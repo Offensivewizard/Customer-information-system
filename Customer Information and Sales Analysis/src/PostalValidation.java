@@ -1,36 +1,32 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PostalValidation {
-		public static boolean postVal(int postal){
-		String	postalString = Integer.toString(postal);
-		 int length = postalString.length();
-		 ArrayList<String> postalCodes = new ArrayList<String>();
-		 if(length>=3){
-			 
-				try {
-
-					String[] data;
-					String line = "";
-
-					File postFile = new File("postal_codes.csv");
-					Scanner in = new Scanner(postFile);
-					in.nextLine(); 
-
-					while (in.hasNextLine()) {
-						line = in.nextLine();
-						data = line.split("//|");
-						//postalCodes.add(new (data[0], data[1], Long.parseLong(data[2])));
-					}
-
-				} catch (Exception e) {
-					System.out.println(e.getMessage());
+		public static boolean postVal(String postal){
+			ArrayList<PostalCode> inputCode = new ArrayList<PostalCode>();
+			
+			
+			try {
+				String[] data;
+				String line = "";
+				File inFile = new File("postal_codes.csv");
+				Scanner in = new Scanner(inFile);
+				in.nextLine();
+				while(in.hasNextLine()){
+					line = in.nextLine();
+					data = line.split("//|");
+					inputCode.add(new PostalCode(data[0]));
 				}
-		 }
-		 else{
-			 return false;
-		 }
-		return false;
+				
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			while(postal !=  ){
+				
+			}
 		}
 }
