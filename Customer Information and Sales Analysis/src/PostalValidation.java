@@ -5,28 +5,39 @@ import java.util.Scanner;
 
 public class PostalValidation {
 		public static boolean postVal(String postal){
-			ArrayList<PostalCode> inputCode = new ArrayList<PostalCode>();
-			
+			ArrayList<String> postalCodes = new ArrayList<>();
+			if(postal.length()>2){
 			
 			try {
-				String[] data;
+			
 				String line = "";
 				File inFile = new File("postal_codes.csv");
 				Scanner in = new Scanner(inFile);
-				in.nextLine();
+				//in.nextLine();
 				while(in.hasNextLine()){
 					line = in.nextLine();
-					data = line.split("//|");
-					inputCode.add(new PostalCode(data[0]));
+					postalCodes.add(line.substring(0, 3));
 				}
+				in.close();
 				
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			} catch (Exception e) {
+				System.out.println("An error has occured.");
+				System.out.println(e.getMessage());
 			}
 			
-			while(postal !=  ){
-				
+			for(int i = 0; i<postalCodes.size(); i++){
+				String t = postalCodes.get(i);
+				if(postal.equals(t)){
+					return true;
+				}
 			}
+			
+			}
+			else{
+				System.out.println("Error: Invalid postal code. Please try again");
+				return false;
+			}
+			System.out.println("Error: Invalid postal code. Please try again");
+			return false; 
 		}
 }

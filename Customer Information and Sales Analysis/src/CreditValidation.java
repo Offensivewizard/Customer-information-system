@@ -12,7 +12,7 @@ public class CreditValidation {
 			if(i%2 == 0) {
 				sum1 += (t);
 				
-			}
+			} 
 			
 		}
 		for (int i = 0; i<rNumber.length(); i++) {
