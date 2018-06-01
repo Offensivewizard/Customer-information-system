@@ -1,6 +1,11 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 public class Driver {
-
+	
+	private static int id;
+	
 	public static void main(String[] args) {
 				
 		
@@ -10,12 +15,13 @@ public class Driver {
 		System.out.println("Welcome to the customer information and sales analysis system.");
 		System.out.println("Please enter the number corresponding to the option you wish to choose.");
 		System.out.println("1. Enter new customer information.");
-		
+		ArrayList<Customer> details = new ArrayList<Customer>();
 		int option = input.nextInt();
 		if (option == 1){
+			id++;
 			System.out.println("How many customers would you like the enter into the system? Please respond with an integer.");
 			int cnum = input.nextInt();
-			ArrayList<Customer> details = new ArrayList<Customer>();
+	
 			for(int i = 0; i < cnum; i++){
 				boolean creditCheck = false;
 				boolean postalCheck = false;
@@ -48,6 +54,24 @@ public class Driver {
 				details.add(customer);
 		}
 	}
+		if(option == 2){
+			System.out.println("Where should the file output to? Please specify the name of the file and a location on your device. The file type will be added automatically.");
+			String destination = input.next();
+			File inFile = new File (destination + ".csv");
+			try {
+				FileWriter out = new FileWriter(inFile);
+				for(int i = 0; i<details.size(); i++ ){
+					
+					out.close();
+				}
+			} catch (Exception e) {
+				System.out.println("An error has occured.");
+				System.out.println(e.getMessage());
+			}
+			
+			
+			
+		}
 		
 		}
 
