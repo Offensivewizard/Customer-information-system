@@ -61,7 +61,7 @@ public class Driver {
 			try {
 				FileWriter out = new FileWriter(inFile);
 				for(int i = 0; i<details.size(); i++ ){
-					
+					//out.write(details.get(i).getfName);
 					out.close();
 				}
 			} catch (Exception e) {
@@ -71,6 +71,24 @@ public class Driver {
 			
 			
 			
+		}
+		if(option == 3) {
+			long total = 0;
+			try {
+				
+				String line = "";
+				File inFile = new File("sales.csv");
+				Scanner in = new Scanner(inFile);
+				while(in.hasNextLine()){
+					line = in.nextLine();
+					//postalCodes.add(line.substring(0, 3));
+				}
+				in.close();
+				
+			} catch (Exception e) {
+				System.out.println("An error has occured.");
+				System.out.println(e.getMessage());
+			}
 		}
 		
 		}
