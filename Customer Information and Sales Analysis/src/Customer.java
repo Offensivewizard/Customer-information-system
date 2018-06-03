@@ -5,7 +5,9 @@ private static	String lastName;
 private static	String cityName;
 private static	String postalCode;
 private static	String creditNum;
-	
+	/**
+	 * Customer object, containing the necessary parameters
+	 */
 	
 
 
@@ -19,19 +21,19 @@ private static	String creditNum;
 					}
 					
 					
-					public String getfName(Customer customer ) {
+					public static String getfName(Customer customer ) {
 						return firstName;
 					}
-					public String getlName() {
+					public static String getlName(Customer customer) {
 						return lastName;
 					}
-					public String getCity() {
+					public static String getCity(Customer customer) {
 						return cityName;
 					}
-					public String getPostal() {
+					public static String getPostal(Customer customer) {
 						return postalCode;
 					}
-					public String getCredit() {
+					public static String getCredit(Customer customer) {
 						return creditNum;
 					}
 					

@@ -1,11 +1,17 @@
 
 public class CreditValidation {
 		public static boolean creditValidate(long cNum){
+			/**
+			 * Uses the reverseNum method to return a reversed long, which is then converted into a string
+			 */
 		long rNum =	reverseNum(cNum);
 		String rNumber = String.valueOf(rNum);
 	
 		int sum1 = 0;
 		int sum2 = 0;
+		/**
+		 * The number is checked using the Lunh algorithm and the length of the number
+		 */
 		for(int i = 0; i<rNumber.length(); i++) {
 			char y = rNumber.charAt(i);
 			int t = Character.getNumericValue(y);
@@ -46,7 +52,9 @@ public class CreditValidation {
 			return true;
 			
 		}
-		
+		/**
+		 * If the number proves invalid the user is asked to enter another number
+		 */
 		else {
 			System.out.println("Error: Invalid credit card number. Please try again.");
 			return false;
@@ -56,6 +64,9 @@ public class CreditValidation {
 			
 			
 		}
+		/**
+		 * Method that returns the inverse of a long variable
+		 */
 		public static long reverseNum(long num){
 			long reverseNum = 0;
 			for(long i = num; i!= 0; i/=10 ){
