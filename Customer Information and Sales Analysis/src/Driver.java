@@ -79,7 +79,7 @@ public class Driver {
 				}
 				
 				/**
-				 * Customer details are stored in a new customer object, which is then added to the details arraylist
+				 * Customer details are stored in a new customer object, which is then added to the details arraylist.
 				 */
 				Customer customer = new Customer (fName, lName, city, postal, credit, id);
 				details.add(customer);

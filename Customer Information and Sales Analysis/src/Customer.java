@@ -7,7 +7,7 @@ private	String postalCode;
 private	String creditNum;
 private int idNum;
 	/**
-	 * Customer object, containing the necessary parameters
+	 * Customer object, containing the necessary parameters and id signature
 	 */
 	
 
