@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.*;
 public class Driver {
 	
-	private static int id;
+	private static int id=0;
+	static ArrayList<Customer> details = new ArrayList<Customer>();
+	static ArrayList<Integer> salesSum = new ArrayList<Integer>();
 	
 	public static void main(String[] args) {
 				
@@ -18,26 +20,30 @@ public class Driver {
 			/**
 			 * Numeric entry menu, input recorded with scanner
 			 */
+		System.out.println("");
 		System.out.println("Welcome to the customer information and sales analysis system.");
 		System.out.println("Please enter the number corresponding to the option you wish to choose.");
 		System.out.println("1. Enter new customer information.");
 		System.out.println("2. Export customer information to a file.");
 		System.out.println("3. Display value of total sales data from file.");
-		System.out.println("4. Analyse sales data to detect potential fraud.");
+		System.out.println("4. Analyse sales data to detect potential fraud. Please use option 3 before using this one.");
 		System.out.println("5. Exit the program.");
-		ArrayList<Customer> details = new ArrayList<Customer>();
-		ArrayList<String> salesSum = new ArrayList<String>();
+
+		
+
+		
 		int option = input.nextInt();
 		if (option == 1){
 			/**
 			 * User enters the information for a specified amount of customers. 
 			 * Values stored in Customer objects which are then stored in an arraylist or customers
 			 */
-			id++;
+			
 			System.out.println("How many customers would you like the enter into the system? Please respond with an integer.");
 			int cnum = input.nextInt();
 	
 			for(int i = 0; i < cnum; i++){
+				id++;
 				boolean creditCheck = false;
 				boolean postalCheck = false;
 				long credit = 0;
@@ -75,9 +81,8 @@ public class Driver {
 				/**
 				 * Customer details are stored in a new customer object, which is then added to the details arraylist
 				 */
-				Customer customer = new Customer (fName, lName, city, postal, credit);
+				Customer customer = new Customer (fName, lName, city, postal, credit, id);
 				details.add(customer);
-				int x = details.size();
 				System.out.println("Customer data added succesfully");
 		}
 	}
@@ -90,16 +95,24 @@ public class Driver {
 			File outFile = new File (destination);
 			
 		try {
+			/**
+			 * The contents of each Customer in the details arraylist are written to the csv file
+			 */
 				FileWriter out = new FileWriter(outFile);
-				int y = 1 + details.size();
-				System.out.println(y);
-				for(int i = 0; i<y; i++ ){
-					System.out.println("check2");
-					out.write(Customer.getfName(details.get(i)) + "," + Customer.getlName(details.get(i)) + "," + Customer.getCity(details.get(i)) + "," + Customer.getPostal(details.get(i)) + ","+ Customer.getCredit(details.get(i)) + ",");
-					out.close();
+				out.write("First Name , Last Name , City , Postal Code , Credit Card , ID");
+				out.write("\n");
+				for(int i = 0; i<details.size(); i++ ){
+					out.write(details.get(i).getfName() + ",");
+					out.write(details.get(i).getlName() + ",");
+					out.write(details.get(i).getCity() + ",");
+					out.write(details.get(i).getPostal() + ",");
+					out.write(details.get(i).getCredit() + ",");
+					out.write(details.get(i).getId() + ",");
+					out.write("\n");
 					
 				}
-			//	System.out.println("The file has been written successfully");
+				System.out.println("The file has been written successfully");
+				out.close();
 			
 			} catch (Exception e) {
 				System.out.println("An error has occured.");
@@ -112,27 +125,36 @@ public class Driver {
 		}
 		if(option == 3) {
 			long total = 0;
+			File inFile = new File("sales.csv");
+			
 
 			try {
-				
-				String line = "";
-				String line2 = "";
-				
-				File inFile = new File("sales.csv");
 				Scanner in = new Scanner(inFile);
-				in.nextLine();
+			in.nextLine();
+			String temp;
+				
+				
 				while(in.hasNextLine()){
-					line = in.next("\\|");
-					line2 =in.nextLine();
-					salesSum.add(line2);
+					temp = in.next();
+					String[] arr = new String[2];
+					arr = temp.split(",");
+					
+					salesSum.add(Integer.valueOf(arr[1]));
 					in.nextLine();
+					
 				}
-				in.close();
 				
 			} catch (Exception e) {
 				System.out.println("An error has occured.");
 				System.out.println(e.getMessage());
 			}
+			
+			long totalSales = 0L;
+			
+			for(int i = 0; i<salesSum.size(); i++) {
+				totalSales += salesSum.get(i);
+			}
+			System.out.println("the total sales in the file total to " + totalSales);
 		}
 		
 		if(option == 4) {
@@ -155,7 +177,8 @@ public class Driver {
 			 * from the sales.csv file
 			 */
 			for(int i = 0; i<total; i++ ) {
-				String temp = salesSum.get(i);
+				int temp2 = salesSum.get(i);
+				String temp = Integer.toString(temp2);
 				char x = temp.charAt(0);
 				int y = Character.getNumericValue(x);
 				if(y == 1) {

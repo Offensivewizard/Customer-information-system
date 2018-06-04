@@ -1,40 +1,45 @@
 
 public class Customer {
-private static	String firstName;
-private static	String lastName;
-private static	String cityName;
-private static	String postalCode;
-private static	String creditNum;
+private	String firstName;
+private	String lastName;
+private	String cityName;
+private	String postalCode;
+private	String creditNum;
+private int idNum;
 	/**
 	 * Customer object, containing the necessary parameters
 	 */
 	
 
 
-					public Customer(String fName, String lName, String city, String postal, long credit) {
+					public Customer(String fName, String lName, String city, String postal, long credit,int id ) {
 						firstName =fName;
 						lastName = lName;
 					cityName = city;
 					postalCode = postal;
 					creditNum = Long.toString(credit);
+					idNum = id;
 						
 					}
 					
 					
-					public static String getfName(Customer customer ) {
+					public String getfName() {
 						return firstName;
 					}
-					public static String getlName(Customer customer) {
+					public String getlName() {
 						return lastName;
 					}
-					public static String getCity(Customer customer) {
+					public String getCity() {
 						return cityName;
 					}
-					public static String getPostal(Customer customer) {
+					public String getPostal() {
 						return postalCode;
 					}
-					public static String getCredit(Customer customer) {
+					public String getCredit() {
 						return creditNum;
+					}
+					public int getId() {
+						return idNum;
 					}
 					
 }
